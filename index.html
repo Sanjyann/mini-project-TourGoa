@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourGoa | Your Ultimate Goa Guide</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the best of Goa! Your ultimate guide to pristine beaches, vibrant culture, delicious cuisine, and top attractions. Plan your perfect Goan holiday with us.">
+    <meta name="keywords" content="Goa, Goa tourism, travel Goa, Goa beaches, Goa travel guide, India tourism">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed-top py-3">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <a href="#" class="navbar-brand text-secondary fs-4 fw-bold font-poppins">TourGoa.</a>
+            
+            <div class="d-none d-md-flex gap-3 align-items-center">
+                <a href="#home" class="nav-link text-body active">Home</a>
+                <a href="#attractions" class="nav-link text-body">Attractions</a>
+                <a href="#guides" class="nav-link text-body">Guides</a>
+                <a href="#gallery" class="nav-link text-body">Gallery</a>
+                <a href="#events" class="nav-link text-body">Events</a>
+                <a href="#reviews" class="nav-link text-body">Reviews</a>
+                <a href="#faq" class="nav-link text-body">FAQ</a>
+                <a href="#contact" class="btn btn-secondary rounded-pill px-4">Contact</a>
+                <button id="theme-toggle" class="btn btn-outline-secondary rounded-circle p-2 lh-1">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <button id="mobile-menu-button" class="d-md-none btn">
+                <i class="fas fa-bars fs-5"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="d-none d-md-none bg-body-tertiary border-top">
+            <a href="#home" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Home</a>
+            <a href="#attractions" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Attractions</a>
+            <a href="#guides" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Guides</a>
+            <a href="#gallery" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Gallery</a>
+            <a href="#events" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Events</a>
+            <a href="#reviews" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Reviews</a>
+            <a href="#faq" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">FAQ</a>
+            <a href="#contact" class="d-block p-3 px-4 text-decoration-none text-body fw-semibold">Contact</a>
+            <div class="p-3 px-4">
+                 <button id="mobile-theme-toggle" class="btn btn-outline-secondary w-100">
+                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home/Hero Section -->
+        <section id="home" class="p-0">
+            <div class="container text-center text-white">
+                <h1 class="display-3 fw-bold mb-3 font-poppins">Discover the Soul of Goa</h1>
+                <p class="fs-4 fw-light mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">Your unforgettable adventure in a tropical paradise begins right here.</p>
+                <div id="weather-widget" class="d-inline-block mx-auto mb-4">
+                    <!-- Weather data will be injected here by JS -->
+                </div>
+                <div>
+                    <a href="#attractions" class="btn btn-primary rounded-pill px-5 py-3 fs-5">
+                        Explore Now <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Attractions Section -->
+        <section id="attractions" class="bg-body-tertiary fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Top Attractions</h2>
+                    <p class="text-muted fs-5">Explore the must-visit destinations in Goa.</p>
+                </div>
+                
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="input-group">
+                            <input type="search" id="attraction-search" class="form-control form-control-lg" placeholder="Search for an attraction...">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="filter-buttons" class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+                    <button class="filter-btn btn btn-secondary rounded-pill px-4 active" data-filter="all">All</button>
+                    <button class="filter-btn btn btn-light rounded-pill px-4" data-filter="beach">Beaches</button>
+                    <button class="filter-btn btn btn-light rounded-pill px-4" data-filter="nature">Nature</button>
+                    <button class="filter-btn btn btn-light rounded-pill px-4" data-filter="historic">Historic</button>
+                </div>
+                
+                <div id="attractions-grid" class="row g-4">
+                    <!-- Card 1 -->
+                    <div class="col-lg-4 col-md-6 attraction-card-wrapper" data-category="beach">
+                        <div class="card text-white attraction-card custom-card overflow-hidden" data-attraction-id="baga">
+                            <img src="./assets/baga-beach.jpeg" class="card-img" alt="Baga Beach">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+                                <h3 class="card-title h4 font-poppins">Baga Beach</h3>
+                                <p class="card-text small">Famous for its vibrant nightlife, beach shacks, and water sports.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                     <div class="col-lg-4 col-md-6 attraction-card-wrapper" data-category="nature">
+                        <div class="card text-white attraction-card custom-card overflow-hidden" data-attraction-id="dudhsagar">
+                            <img src="./assets/dudhsagar.jpg" class="card-img" alt="Dudhsagar Falls">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+                                <h3 class="card-title h4 font-poppins">Dudhsagar Falls</h3>
+                                <p class="card-text small">A majestic four-tiered waterfall located on the Mandovi River.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                     <div class="col-lg-4 col-md-6 attraction-card-wrapper" data-category="historic">
+                        <div class="card text-white attraction-card custom-card overflow-hidden" data-attraction-id="aguada">
+                            <img src="./assets/Aguada-Fort.jpg" class="card-img" alt="Fort Aguada">
+                            <div class="card-img-overlay d-flex flex-column justify-content-end p-4">
+                                <h3 class="card-title h4 font-poppins">Fort Aguada</h3>
+                                <p class="card-text small">A 17th-century Portuguese fort with a lighthouse overlooking the Arabian Sea.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-none" id="no-attractions-found">
+                        <div class="text-center p-5 bg-body rounded-3">
+                            <h3 class="font-poppins">No attractions found</h3>
+                            <p class="text-muted">Try adjusting your search or filter criteria.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guides Section -->
+        <section id="guides" class="fade-in-section">
+             <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Travel Guides</h2>
+                </div>
+                <div class="mx-auto" style="max-width: 720px;">
+                    <div class="d-flex justify-content-center border-bottom mb-4">
+                        <button data-tab="food" class="guide-tab active-tab">Food</button>
+                        <button data-tab="culture" class="guide-tab">Culture</button>
+                        <button data-tab="shopping" class="guide-tab">Shopping</button>
+                    </div>
+                    <div id="guide-content">
+                        <div id="food-content" class="guide-content-panel">
+                            <h3 class="h4 fw-bold mb-3 font-poppins">Goan Cuisine</h3>
+                            <p class="text-muted">Goan food is a delectable fusion of Portuguese and coastal Indian flavors. Don't miss the fresh seafood curry, Vindaloo, and the sweet Bebinca. Beach shacks offer the freshest catch of the day, grilled to perfection.</p>
+                        </div>
+                        <div id="culture-content" class="guide-content-panel d-none">
+                            <h3 class="h4 fw-bold mb-3 font-poppins">Vibrant Culture</h3>
+                            <p class="text-muted">Goa's culture is a unique blend of Indian and Portuguese influences. This is reflected in its architecture, music (like the Mando), and numerous festivals. The Carnival in February is a spectacular display of color and joy.</p>
+                        </div>
+                        <div id="shopping-content" class="guide-content-panel d-none">
+                            <h3 class="h4 fw-bold mb-3 font-poppins">Shopping Hotspots</h3>
+                            <p class="text-muted">From bustling flea markets like Anjuna to high-end boutiques, Goa is a shopper's paradise. Find unique handicrafts, cashew nuts, spices, and trendy beachwear. Remember to bargain at the local markets!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Gallery Section -->
+        <section id="gallery" class="bg-body-tertiary fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Photo Gallery</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-container">
+                        <img src="./assets/Goa Vibes.webp" class="img-fluid" alt="Goa Vibes">
+                        <div class="overlay-caption"><p>Goa Vibes</p></div>
+                    </div>
+                    <div class="gallery-container">
+                       <img src="./assets/Goan Sunset.jpg" class="img-fluid" alt="Goan Sunset">
+                       <div class="overlay-caption"><p>Goan Sunset</p></div>
+                    </div>
+                    <div class="gallery-container">
+                       <img src="./assets/Anjuna Flea Market.webp" class="img-fluid" alt="Anjuna Flea Market">
+                       <div class="overlay-caption"><p>Anjuna Flea Market</p></div>
+                    </div>
+                    <div class="gallery-container">
+                        <img src="./assets/Goa Nightlife.jpg" class="img-fluid" alt="Goa Nightlife">
+                        <div class="overlay-caption"><p>Goa Nightlife</p></div>
+                    </div>
+                    <div class="gallery-container">
+                        <img src="./assets/Spice Farm.jpeg" class="img-fluid" alt="Spice Farm">
+                        <div class="overlay-caption"><p>Spice Farm</p></div>
+                    </div>
+                     <div class="gallery-container">
+                       <img src="./assets/Dolphin Watching.webp" class="img-fluid" alt="Dolphin Watching">
+                       <div class="overlay-caption"><p>Dolphin Watching</p></div>
+                    </div>
+                    <div class="gallery-container">
+                       <img src="./assets/old Goa Churche.jpeg" class="img-fluid" alt="Old Goa Church">
+                       <div class="overlay-caption"><p>Old Goa Church</p></div>
+                    </div>
+                    <div class="gallery-container">
+                        <img src="./assets/relaxing-on-beach.jpg" class="img-fluid" alt="Relaxing on a beach">
+                        <div class="overlay-caption"><p>Relaxing on a beach</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Upcoming Events Section -->
+        <section id="events" class="fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Goa's Events</h2>
+                    <p class="text-muted fs-5">Plan your trip around Goa's vibrant festivals.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 custom-card overflow-hidden event-card" data-start-date="2026-02-09" data-end-date="2026-02-13">
+                            <img src="./assets/Goa Carnival.jpg" class="card-img-top" alt="Goa Carnival" style="height: 220px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title font-poppins">Goa Carnival</h5>
+                                <p class="card-text text-muted small"><i class="far fa-calendar-alt me-2"></i>February 9-13, 2026</p>
+                                <p class="card-text flex-grow-1">Experience the vibrant parades, music, and dancing that take over the streets of Goa for four days before Lent.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Learn More</a>
+                                    <span class="event-status"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 custom-card overflow-hidden event-card" data-start-date="2025-12-28" data-end-date="2025-12-31">
+                            <img src="./assets/Sunburn Festival.webp" class="card-img-top" alt="Sunburn Festival" style="height: 220px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title font-poppins">Sunburn Festival</h5>
+                                <p class="card-text text-muted small"><i class="far fa-calendar-alt me-2"></i>December 28-31, 2025</p>
+                                <p class="card-text flex-grow-1">Asia's largest electronic music festival, featuring top international DJs on the beautiful beaches of Goa.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                     <a href="#" class="btn btn-sm btn-outline-secondary">Learn More</a>
+                                     <span class="event-status"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 custom-card overflow-hidden event-card" data-start-date="2025-07-20" data-end-date="2025-07-28">
+                            <img src="./assets/IFFI Goa.webp" class="card-img-top" alt="IFFI Goa" style="height: 220px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title font-poppins">IFFI Goa</h5>
+                                <p class="card-text text-muted small"><i class="far fa-calendar-alt me-2"></i>July 20-28, 2025</p>
+                                <p class="card-text flex-grow-1">The International Film Festival of India brings together cinema lovers and filmmakers from across the globe.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                     <a href="#" class="btn btn-sm btn-outline-secondary">Learn More</a>
+                                     <span class="event-status"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Reviews/Testimonials Section -->
+        <section id="reviews" class="bg-body-tertiary fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">What Travelers Say</h2>
+                </div>
+                <div class="mx-auto bg-body p-3 p-md-5 rounded-3 shadow-lg position-relative" style="max-width: 720px;">
+                    <div id="testimonial-container" class="text-center">
+                        <!-- Testimonials will be injected here -->
+                    </div>
+                    <button id="prev-testimonial" class="btn btn-secondary rounded-circle position-absolute top-50 start-0 translate-middle z-1 d-none d-md-block"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-testimonial" class="btn btn-secondary rounded-circle position-absolute top-50 start-100 translate-middle z-1 d-none d-md-block"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Itinerary Planner Section -->
+        <section id="itinerary" class="fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Plan Your Trip</h2>
+                    <p class="text-muted fs-5">Get a personalized itinerary in seconds.</p>
+                </div>
+                <div class="row g-5 align-items-center justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="bg-body-tertiary p-4 rounded-3 shadow-sm">
+                            <h3 class="h4 fw-bold mb-4 font-poppins">Create Your Itinerary</h3>
+                            <form id="itinerary-form">
+                                <div class="mb-3">
+                                    <label for="days" class="form-label fw-semibold">Number of Days:</label>
+                                    <input type="number" id="days" name="days" min="1" max="10" value="3" class="form-control">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Interests:</label>
+                                    <div class="d-flex flex-wrap gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="interest" value="Beaches" id="checkBeaches" checked>
+                                            <label class="form-check-label" for="checkBeaches">Beaches</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="interest" value="Adventure" id="checkAdventure">
+                                            <label class="form-check-label" for="checkAdventure">Adventure</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="interest" value="Culture" id="checkCulture">
+                                            <label class="form-check-label" for="checkCulture">Culture</label>
+                                        </div>
+                                         <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="interest" value="Nightlife" id="checkNightlife">
+                                            <label class="form-check-label" for="checkNightlife">Nightlife</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill">Generate Plan</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="itinerary-result" class="p-4 rounded-3 border h-100">
+                            <h3 class="h4 fw-bold mb-3 font-poppins">Your Custom Plan</h3>
+                            <div id="plan-output" class="text-muted">
+                                <p>Fill out the form to see your personalized Goa itinerary!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- FAQ Section -->
+        <section id="faq" class="bg-body-tertiary fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Frequently Asked Questions</h2>
+                </div>
+                <div class="accordion mx-auto" style="max-width: 720px;" id="faqAccordion">
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                What is the best time to visit Goa?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                The best time to visit Goa is from November to February when the weather is cool and pleasant, making it ideal for beach activities and sightseeing.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                Is Goa safe for solo travelers?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Yes, Goa is generally considered safe for solo travelers. However, like any tourist destination, it's important to stay aware of your surroundings, avoid isolated areas at night, and take standard safety precautions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                What local transportation is available?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Renting a scooter or motorcycle is the most popular way to get around. You can also hire taxis, auto-rickshaws, or use local bus services. App-based services like Goa Miles are also available.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br/>
+        <!-- Contact Section -->
+        <section id="contact" class="fade-in-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title font-poppins">Get In Touch</h2>
+                </div>
+                <div class="mx-auto bg-body-tertiary p-4 p-md-5 rounded-3 shadow-lg" style="max-width: 600px;">
+                    <form id="contact-form" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold">Name</label>
+                            <input type="text" id="name" name="name" required class="form-control p-2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">Email</label>
+                            <input type="email" id="email" name="email" required class="form-control p-2">
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label fw-semibold">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="form-control p-2"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary w-100 py-2 rounded-pill">Send Message</button>
+                    </form>
+                    <p id="form-status" class="text-center mt-3 fw-semibold"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row gy-4 text-center text-md-start">
+                <div class="col-md-4">
+                    <a href="#" class="footer-brand font-poppins text-decoration-none">TourGoa.</a>
+                    <p class="mt-2">Your adventure in paradise awaits.</p>
+                </div>
+                <div class="col-md-2 offset-md-1">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#home" class="nav-link p-0">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#attractions" class="nav-link p-0">Attractions</a></li>
+                        <li class="nav-item mb-2"><a href="#gallery" class="nav-link p-0">Gallery</a></li>
+                        <li class="nav-item mb-2"><a href="#faq" class="nav-link p-0">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <h5 class="fw-bold">Follow Us</h5>
+                    <p>Stay connected for the latest updates.</p>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-3">
+                        <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 mt-4 border-top border-secondary">
+                 <p class="small">&copy; 2025 TourGOA. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="lightbox" class="modal-container">
+        <button id="lightbox-close" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 fs-4"></button>
+        <img id="lightbox-img" src="" alt="Enlarged gallery image">
+    </div>
+
+    <!-- Attraction Modal -->
+    <div id="attraction-modal" class="modal-container p-3">
+        <div class="modal-content rounded-3 shadow-lg position-relative">
+            <button id="modal-close" class="btn-close position-absolute top-0 end-0 m-2 z-1"></button>
+            <img id="modal-img" src="" class="w-100 rounded-top" alt="Attraction Image">
+            <div class="p-4">
+                <h3 id="modal-title" class="h4 fw-bold font-poppins mb-2"></h3>
+                <p id="modal-description" class="text-muted mb-3"></p>
+                <a id="modal-map-link" href="#" target="_blank" class="btn btn-secondary btn-sm rounded-pill px-3">
+                    <i class="fas fa-map-marker-alt me-2"></i>View on Map
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="p-3 shadow-lg">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <p class="mb-0 text-body-secondary">We use cookies to improve your experience on our site. By continuing to use our site, you agree to our <a href="#">Cookie Policy</a>.</p>
+            <button id="cookie-accept" class="btn btn-primary rounded-pill px-4 flex-shrink-0">Accept</button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top" class="btn btn-secondary rounded-circle shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
